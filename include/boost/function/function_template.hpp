@@ -106,7 +106,7 @@ namespace boost {
         typename R BOOST_FUNCTION_COMMA
         BOOST_FUNCTION_TEMPLATE_PARMS
         >
-      struct [[clang::lto_visibility_public]] BOOST_FUNCTION_VOID_FUNCTION_INVOKER
+      struct BOOST_SYMBOL_VISIBLE BOOST_FUNCTION_VOID_FUNCTION_INVOKER
       {
         static BOOST_FUNCTION_VOID_RETURN_TYPE
         invoke(function_buffer& function_ptr BOOST_FUNCTION_COMMA
