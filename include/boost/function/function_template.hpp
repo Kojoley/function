@@ -106,7 +106,7 @@ namespace boost {
         typename R BOOST_FUNCTION_COMMA
         BOOST_FUNCTION_TEMPLATE_PARMS
         >
-      struct BOOST_SYMBOL_VISIBLE BOOST_FUNCTION_VOID_FUNCTION_INVOKER
+      struct BOOST_FUNCTION_VOID_FUNCTION_INVOKER
       {
         static BOOST_FUNCTION_VOID_RETURN_TYPE
         invoke(function_buffer& function_ptr BOOST_FUNCTION_COMMA
@@ -663,7 +663,7 @@ namespace boost {
     typename R BOOST_FUNCTION_COMMA
     BOOST_FUNCTION_TEMPLATE_PARMS
   >
-  class BOOST_FUNCTION_FUNCTION : public function_base
+  class __attribute__((lto_visibility_public)) BOOST_FUNCTION_FUNCTION : public function_base
   {
   public:
 #ifndef BOOST_NO_VOID_RETURNS
@@ -1050,7 +1050,7 @@ template<typename R BOOST_FUNCTION_COMMA BOOST_FUNCTION_TEMPLATE_PARMS>
 
 template<typename R BOOST_FUNCTION_COMMA
          BOOST_FUNCTION_TEMPLATE_PARMS>
-class function<BOOST_FUNCTION_PARTIAL_SPEC>
+class __attribute__((lto_visibility_public)) function<BOOST_FUNCTION_PARTIAL_SPEC>
   : public BOOST_FUNCTION_FUNCTION<R BOOST_FUNCTION_COMMA BOOST_FUNCTION_TEMPLATE_ARGS>
 {
   typedef BOOST_FUNCTION_FUNCTION<R BOOST_FUNCTION_COMMA BOOST_FUNCTION_TEMPLATE_ARGS> base_type;
