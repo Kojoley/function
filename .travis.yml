@@ -37,7 +37,35 @@ env:
 install:
   - git clone https://github.com/jeking3/boost-ci.git boost-ci
   - cp -pr boost-ci/ci boost-ci/.codecov.yml .
-  - source ci/travis/install.sh
+  - export SELF=`basename $TRAVIS_BUILD_DIR`
+  - cd ..
+  - |
+    # Determining the root branch
+    if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
+      export BRANCH=$TRAVIS_BRANCH
+    else
+      # It is a pull request. Retrieve the base branch from GitHub
+      GH_PR_API=https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST
+      export BRANCH=`curl -s $GH_PR_API | jq -r .head.ref`;
+    fi
+    if [[ ! "$BRANCH" =~ ^(master|develop)$ ]]; then
+      # Travis has been triggered not from our main branches.
+      # Find out the base branch from the git history
+      # TODO: Not implemented yet, but in most cases it will be develop branch
+      export BRANCH=develop
+    fi
+    echo Root branch is $BRANCH
+  - git clone -b $BRANCH --depth 1 https://github.com/boostorg/boost.git boost-root
+  - cd boost-root
+  - git submodule update -q --init tools/boostdep
+  - git submodule update -q --init tools/build
+  - git submodule update -q --init tools/inspect
+  - cp -r $TRAVIS_BUILD_DIR/* libs/$SELF
+  - export BOOST_ROOT="`pwd`"
+  - export PATH="`pwd`":$PATH
+  - python tools/boostdep/depinst/depinst.py --include benchmark --include example --include examples --include tools $DEPINST $SELF
+  - ./bootstrap.sh
+  - ./b2 headers
 
 addons:
   apt:
