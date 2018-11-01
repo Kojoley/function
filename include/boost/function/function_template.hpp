@@ -905,7 +905,7 @@ namespace boost {
         if (this->has_trivial_copy_and_destroy())
           // Don't operate on storage directly since union type doesn't relax
           // strict aliasing rules, despite of having member char type.
-          std::memcpy(this->functor, f.functor, sizeof(this->functor));
+          std::memcpy(&this->functor, &f.functor, sizeof(this->functor));
         else
           get_vtable()->base.manager(f.functor, this->functor,
                                      boost::detail::function::clone_functor_tag);
@@ -995,7 +995,7 @@ namespace boost {
           if (this->has_trivial_copy_and_destroy())
             // Don't operate on storage directly since union type doesn't relax
             // strict aliasing rules, despite of having member char type.
-            std::memcpy(this->functor, f.functor, sizeof(this->functor));
+            std::memcpy(&this->functor, &f.functor, sizeof(this->functor));
           else
             get_vtable()->base.manager(f.functor, this->functor,
                                      boost::detail::function::move_functor_tag);
