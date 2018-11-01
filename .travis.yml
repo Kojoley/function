@@ -117,7 +117,7 @@ jobs:
         - COMMENT=ubsan
         - B2_VARIANT=variant=debug
         - TOOLSET=gcc-8
-        - CXXSTD=03,11,17
+        - CXXSTD=11,17
         - CXXFLAGS="cxxflags=-fno-omit-frame-pointer cxxflags=-fsanitize=undefined cxxflags=-fno-sanitize-recover=undefined"
         - LINKFLAGS="linkflags=-fsanitize=undefined linkflags=-fno-sanitize-recover=undefined linkflags=-fuse-ld=gold"
         - UBSAN_OPTIONS=print_stacktrace=1
@@ -128,7 +128,7 @@ jobs:
         - COMMENT=ubsan
         - B2_VARIANT=variant=debug
         - TOOLSET=clang-6
-        - CXXSTD=03,11,17
+        - CXXSTD=11,17
         - CXXFLAGS="cxxflags=-fno-omit-frame-pointer cxxflags=-fsanitize=undefined cxxflags=-fno-sanitize-recover=undefined"
         - LINKFLAGS="linkflags=-fsanitize=undefined linkflags=-fno-sanitize-recover=undefined"
         - UBSAN_OPTIONS=print_stacktrace=1
@@ -140,7 +140,7 @@ jobs:
         - COMMENT=ubsan
         - B2_VARIANT=variant=debug
         - TOOLSET=clang-7
-        - CXXSTD=03,11,17
+        - CXXSTD=11,17
         - CXXFLAGS="cxxflags=-fno-omit-frame-pointer cxxflags=-fsanitize=undefined cxxflags=-fno-sanitize-recover=undefined"
         - LINKFLAGS="linkflags=-fsanitize=undefined linkflags=-fno-sanitize-recover=undefined"
         - UBSAN_OPTIONS=print_stacktrace=1

@@ -663,7 +663,7 @@ namespace boost {
     typename R BOOST_FUNCTION_COMMA
     BOOST_FUNCTION_TEMPLATE_PARMS
   >
-  class __attribute__((lto_visibility_public)) BOOST_FUNCTION_FUNCTION : public function_base
+  class [[clang::lto_visibility_public]] BOOST_FUNCTION_FUNCTION : public function_base
   {
   public:
 #ifndef BOOST_NO_VOID_RETURNS
@@ -1050,7 +1050,7 @@ template<typename R BOOST_FUNCTION_COMMA BOOST_FUNCTION_TEMPLATE_PARMS>
 
 template<typename R BOOST_FUNCTION_COMMA
          BOOST_FUNCTION_TEMPLATE_PARMS>
-class __attribute__((lto_visibility_public)) function<BOOST_FUNCTION_PARTIAL_SPEC>
+class [[clang::lto_visibility_public]] function<BOOST_FUNCTION_PARTIAL_SPEC>
   : public BOOST_FUNCTION_FUNCTION<R BOOST_FUNCTION_COMMA BOOST_FUNCTION_TEMPLATE_ARGS>
 {
   typedef BOOST_FUNCTION_FUNCTION<R BOOST_FUNCTION_COMMA BOOST_FUNCTION_TEMPLATE_ARGS> base_type;
